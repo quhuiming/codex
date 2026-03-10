@@ -1,0 +1,172 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background: #ece7dc;
+  color: #1f2421;
+}
+
+.app {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.panel {
+  width: min(100%, 460px);
+  background: #fffdf8;
+  border: 1px solid #d7cebc;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(33, 29, 21, 0.08);
+}
+
+.status {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.label,
+.value,
+.help,
+.overlay-title,
+.overlay-text {
+  margin: 0;
+}
+
+.label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #6f6a5e;
+}
+
+.value {
+  margin-top: 4px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.board-shell {
+  position: relative;
+}
+
+#game-board {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1;
+  border: 1px solid #d7cebc;
+  background: #f3f0e8;
+  transition: box-shadow 120ms ease, transform 120ms ease;
+}
+
+#game-board[data-turn] {
+  box-shadow: 0 0 0 3px rgba(47, 93, 80, 0.16);
+}
+
+#game-board[data-overlay="visible"] {
+  filter: saturate(0.94);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(255, 253, 248, 0.76);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms ease;
+}
+
+.overlay[data-visible="true"] {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.overlay-card {
+  width: min(100%, 280px);
+  border: 1px solid #d7cebc;
+  background: rgba(255, 253, 248, 0.96);
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(33, 29, 21, 0.08);
+}
+
+.overlay-title {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.overlay-text {
+  margin-top: 8px;
+  color: #575346;
+  line-height: 1.5;
+}
+
+.actions,
+.controls,
+.controls-row {
+  display: flex;
+}
+
+.actions {
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.controls {
+  margin-top: 16px;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.controls-row {
+  gap: 10px;
+}
+
+button {
+  border: 1px solid #1f2421;
+  background: #fffdf8;
+  color: inherit;
+  font: inherit;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #f5f0e4;
+}
+
+.help {
+  margin-top: 16px;
+  color: #575346;
+  line-height: 1.5;
+}
+
+@media (max-width: 520px) {
+  .app {
+    padding: 12px;
+  }
+
+  .panel {
+    padding: 16px;
+  }
+
+  .status {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    flex-wrap: wrap;
+  }
+}
